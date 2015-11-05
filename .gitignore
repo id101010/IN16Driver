@@ -1,6 +1,7 @@
 *-cache.lib
 *.bak
 *.bck
+.build
 demos
 doc
 internat
