@@ -65,7 +65,7 @@ void loop()
 
         digitalWrite(latchPin, 0);                   // latch pin low, read input
 
-        shift_byte(dataPin, clockPin, dataArrayMM[j]); // send HH pattern
+        shift_byte(dataPin, clockPin, dataArrayHH[j]); // send HH pattern
         shift_byte(dataPin, clockPin, dataArrayMM[j]); // send MM pattern
 
         digitalWrite(latchPin, 1);                   // latch pin high, to hold data
@@ -87,9 +87,9 @@ void shift_byte(int data, int clock, byte out)
         digitalWrite(clock, 0);         // reset clock pin
 
         if ( out & (1<<i) ) {
-            digitalWrite(data, true);   // if bit is 1 set data pin
+            digitalWrite(data, 1);   // if bit is 1 set data pin
         } else {
-            digitalWrite(data, false);  // if bit is 0 reset data pin
+            digitalWrite(data, 0);  // if bit is 0 reset data pin
         }
 
         digitalWrite(clock, 1);         // set clock pin
