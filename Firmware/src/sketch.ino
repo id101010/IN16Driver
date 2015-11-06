@@ -63,14 +63,14 @@ void loop()
     // iterate through the data arrays and send each pattern
     for (int j = 0; j < 6; j++) {
 
-        digitalWrite(latchPin, 0);                   // latch pin low, read input
+        digitalWrite(latchPin, 0);                      // latch pin low, read input
 
-        shift_byte(dataPin, clockPin, dataArrayHH[j]); // send HH pattern
-        shift_byte(dataPin, clockPin, dataArrayMM[j]); // send MM pattern
+        shift_byte(dataPin, clockPin, dataArrayHH[j]);  // send HH pattern
+        shift_byte(dataPin, clockPin, dataArrayMM[j]);  // send MM pattern
 
-        digitalWrite(latchPin, 1);                   // latch pin high, to hold data
+        digitalWrite(latchPin, 1);                      // latch pin high, to hold data
 
-        delay(250);                                  // delay
+        delay(150);                                     // animation delay
     }
 }
 
@@ -87,13 +87,14 @@ void shift_byte(int data, int clock, byte out)
         digitalWrite(clock, 0);         // reset clock pin
 
         if ( out & (1<<i) ) {
-            digitalWrite(data, 1);   // if bit is 1 set data pin
+            digitalWrite(data, 1);      // if bit is 1 set data pin
         } else {
-            digitalWrite(data, 0);  // if bit is 0 reset data pin
+            digitalWrite(data, 0);      // if bit is 0 reset data pin
         }
 
         digitalWrite(clock, 1);         // set clock pin
         digitalWrite(data, 0);          // clear data pin
     }
+
     digitalWrite(clock, 0);             // reset clock pin and finish the cycle
 }

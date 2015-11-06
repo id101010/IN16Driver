@@ -1,6 +1,7 @@
 *-cache.lib
 *.bak
 *.bck
+*.swp
 .build
 demos
 doc
